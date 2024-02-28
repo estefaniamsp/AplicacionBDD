@@ -17,18 +17,18 @@ public class hosting {
         ingresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String query = "INSERT INTO registro VALUES (default,?,?,?)";
-                String url = "jdbc:mysql://http://sql10.freemysqlhosting.net:3306/sql10686354";
-                String nombre = "sql10686354";
-                String password = "kcqcj5ZKBM";
+                String query = "INSERT INTO pasatiempos(nombre, pasatiempos, descripcion) VALUES (?,?,?)";
+                String url = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10686342";
+                String nombre = "sql10686342";
+                String password = "FZI2EyHqCS";
 
                 String name = nombreF.getText();
                 String pasatiempos = pasatiempoF.getText();
                 String descripcion = descripcionF.getText();
 
-                try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/poo", nombre, password)){
+                try(Connection connection = DriverManager.getConnection(url,nombre, password)){
                     try(PreparedStatement preparedStatement=connection.prepareStatement(query)){
-                        preparedStatement.setString(1,nombre);
+                        preparedStatement.setString(1,name);
                         preparedStatement.setString(2,pasatiempos);
                         preparedStatement.setString(3,descripcion);
 
